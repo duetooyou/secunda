@@ -1,0 +1,18 @@
+[project]
+name = "secunda"
+version = "0.1.0"
+description = "REST API для справочника Организаций, Зданий, Деятельности"
+requires-python = ">=3.13"
+dependencies = [
+    "dishka>=1.7.2",
+    "fastapi>=0.115.0",
+    "sqlalchemy[asyncio]>=2.0.46",
+    "alembic>=1.14.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.7.0",
+    "asyncpg>=0.30.0",
+    "uvicorn[standard]>=0.34.0",
+]
+
+[project.scripts]
+secunda = "secunda.main:main"
