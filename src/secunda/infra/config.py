@@ -24,7 +24,7 @@ class PostgresSettings(ProjectBaseSettings):
     model_config = SettingsConfigDict(env_prefix="POSTGRES_")
 
     def async_url(self) -> str:
-        return f"postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
+        return f"postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}?ssl=disable"
 
 
 class AppSettings(ProjectBaseSettings):

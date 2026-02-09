@@ -33,6 +33,9 @@ def create_app() -> FastAPI:
     return fastapi_app
 
 
+app = create_app()
+
+
 def main():
     import uvicorn
 

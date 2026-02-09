@@ -47,19 +47,8 @@ async def run_async_migrations() -> None:
         poolclass=pool.NullPool,
     )
 
-    last_exc: Exception | None = None
-    for attempt in range(10):
-        try:
-            async with connectable.connect() as connection:
-                await connection.run_sync(do_run_migrations)
-            last_exc = None
-            break
-        except Exception as exc:
-            last_exc = exc
-            await asyncio.sleep(1 + attempt)
-
-    if last_exc is not None:
-        raise last_exc
+    async with connectable.connect() as connection:
+        await connection.run_sync(do_run_migrations)
 
     await connectable.dispose()
 
